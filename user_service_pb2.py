@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x12user_service.proto\x12\x0buserservice\"\"\n\x0eGetUserRequest\x12\x10\n\x08username\x18\x01 \x01(\t\"\"\n\x0fGetUserResponse\x12\x0f\n\x07message\x18\x01 \x01(\t2S\n\x0bUserService\x12\x44\n\x07GetUser\x12\x1b.userservice.GetUserRequest\x1a\x1c.userservice.GetUserResponseb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x12user_service.proto\x12\x0buserservice\"\"\n\x0eGetUserRequest\x12\x10\n\x08username\x18\x01 \x01(\t\"\"\n\x0fGetUserResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\" \n\x11GetUserAgeRequest\x12\x0b\n\x03\x61ge\x18\x01 \x01(\t\"%\n\x12GetUserAgeResponse\x12\x0f\n\x07message\x18\x01 \x01(\t2\x9e\x01\n\x0bUserService\x12\x44\n\x07GetUser\x12\x1b.userservice.GetUserRequest\x1a\x1c.userservice.GetUserResponse\x12I\n\x06GetAge\x12\x1e.userservice.GetUserAgeRequest\x1a\x1f.userservice.GetUserAgeResponseb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -35,6 +35,10 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_GETUSERREQUEST']._serialized_end=69
   _globals['_GETUSERRESPONSE']._serialized_start=71
   _globals['_GETUSERRESPONSE']._serialized_end=105
-  _globals['_USERSERVICE']._serialized_start=107
-  _globals['_USERSERVICE']._serialized_end=190
+  _globals['_GETUSERAGEREQUEST']._serialized_start=107
+  _globals['_GETUSERAGEREQUEST']._serialized_end=139
+  _globals['_GETUSERAGERESPONSE']._serialized_start=141
+  _globals['_GETUSERAGERESPONSE']._serialized_end=178
+  _globals['_USERSERVICE']._serialized_start=181
+  _globals['_USERSERVICE']._serialized_end=339
 # @@protoc_insertion_point(module_scope)

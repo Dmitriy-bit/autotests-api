@@ -10,6 +10,18 @@ message GetUserResponse {
     string message = 1;
 }
 
+
+message GetUserAgeRequest {
+string age = 1;
+}
+
+message GetUserAgeResponse {
+string message = 1;
+}
+
+
 service UserService {
     rpc GetUser (GetUserRequest) returns (GetUserResponse);
+    rpc GetAge (GetUserAgeRequest) returns (GetUserAgeResponse);
 }
+

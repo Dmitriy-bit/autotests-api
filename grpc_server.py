@@ -11,6 +11,13 @@ class UserServiceServicer(user_service_pb2_grpc.UserServiceServicer):
         print(f"Получен запрос от пользователя: {request.username}")
         return user_service_pb2.GetUserResponse(message=f"Привет, {request.username}")
 
+    def GetAge(self, request, contex):
+        print(f"Получен запрос на возраст пользователя")
+        if int(request.age) >= 18:
+            return user_service_pb2.GetUserAgeResponse(message=f"Пользователю {request.age} лет - он взрослый")
+        else:
+            return user_service_pb2.GetUserAgeResponse(message=f"Пользователю {request.age} лет - он ещё маленький")
+
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
