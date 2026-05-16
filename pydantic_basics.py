@@ -113,6 +113,7 @@ course_dict = {
 
 course_dict_model = CourseSchema(**course_dict)
 
+
 print('Course dict model:', course_dict_model)
 
 course_json = """
