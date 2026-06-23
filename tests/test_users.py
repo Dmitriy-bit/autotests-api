@@ -32,6 +32,6 @@ def test_get_user_me(private_users_client: PrivateUsersClient, function_user: Us
     response_data = GetUserResponseSchema.model_validate_json(response.text)
 
     assert_status_code(response.status_code, HTTPStatus.OK)
-    assert_get_user_response(response_data.user, function_user.response.user)
+    assert_get_user_response(response_data, function_user.response)
 
     validate_json_schema(instance=response.json(), schema=response_data.model_json_schema())
