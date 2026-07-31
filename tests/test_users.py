@@ -12,7 +12,7 @@ from tools.assertions.schema import validate_json_schema
 from tools.assertions.users import assert_create_user_response, assert_get_user_response
 
 
-@pytest.mark.parametrize("domain", ["testmail.ru", "yandex.ru", "gmail.com"])
+@pytest.mark.parametrize("domain", ["mail.ru", "gmail.com", "example.com"])
 @pytest.mark.users
 @pytest.mark.regression
 def test_create_user(public_users_client: PublicUsersClient, domain: str):
