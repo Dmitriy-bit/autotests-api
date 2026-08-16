@@ -58,10 +58,10 @@ def assert_create_file_with_empty_filename_response(actual: ValidationErrorRespo
     expected = ValidationErrorResponseSchema(
         details=[
             ValidationErrorSchema(
-                type="missing",  # "string_too_short",
-                input=None,  # "",
-                # context={"min_length": 1},
-                message="Field required",  # "String should have at least 1 character",
+                type="string_too_short",
+                input="",
+                context={"min_length": 1},
+                message="String should have at least 1 character",
                 location=["body", "filename"]
             )
         ]
@@ -79,10 +79,10 @@ def assert_create_file_with_empty_directory_response(actual: ValidationErrorResp
     expected = ValidationErrorResponseSchema(
         details=[
             ValidationErrorSchema(
-                type="missing",  # "string_too_short",
-                input=None,  # "",
-                # context={"min_length": 1},
-                message="Field required",  # "String should have at least 1 character",
+                type="string_too_short",
+                input="",
+                context={"min_length": 1},
+                message="String should have at least 1 character",
                 location=["body", "directory"]
             )
         ]
@@ -93,3 +93,25 @@ def assert_create_file_with_empty_directory_response(actual: ValidationErrorResp
 def assert_found_not_file_response(actual: InternalErrorResponseSchema):
     expected = InternalErrorResponseSchema(details="File not found")
     assert_internal_error_response(actual, expected)
+
+
+def assert_get_file_with_incorrect_file_id_response(actual: ValidationErrorResponseSchema):
+    """
+    Проверяет, что ответ на запрос получения файла с невалидным ID (UUID) соответствует ожидаемой валидационной ошибке.
+
+    :param actual: Ответ от API с ошибкой валидации, который необходимо проверить.
+    :raises AssertionError: Если фактический ответ не соответствует ожидаемому.
+    """
+    expected = ValidationErrorResponseSchema(
+        details=[
+            ValidationErrorSchema(
+                type="uuid_parsing",
+                input="incorrect-file-id",
+                context={
+                    "error": "invalid character: expected an optional prefix of `urn:uuid:` followed by [0-9a-fA-F-], found `i` at 1"},
+                message="Input should be a valid UUID, invalid character: expected an optional prefix of `urn:uuid:` followed by [0-9a-fA-F-], found `i` at 1",
+                location=["path", "file_id"]
+            )
+        ]
+    )
+    assert_validation_error_response(actual, expected)

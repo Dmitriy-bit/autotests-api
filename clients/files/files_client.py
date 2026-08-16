@@ -26,9 +26,11 @@ class FilesClient(APIClient):
         :param request: Словарь с filename, directory, upload_file.
         :return: Ответ от сервера в виде объекта httpx.Response
         """
-        return self.post('/api/v1/files',
-                         data=request.model_dump(by_alias=True, exclude={"upload_file"}),
-                         files={'upload_file': open(request.upload_file, 'rb')})
+        return self.post(
+            "/api/v1/files",
+            data=request.model_dump(by_alias=True, exclude={'upload_file'}),
+            files={"upload_file": open(request.upload_file, 'rb')}
+        )
 
     def create_file(self, request: CreateFileRequestSchema) -> CreateFileResponseSchema:
         response = self.create_file_api(request)

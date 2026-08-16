@@ -2,25 +2,18 @@ from pydantic import BaseModel, Field, ConfigDict
 from typing import Any
 
 
-# class ValidationErrorSchema(BaseModel):
-#     model_config = ConfigDict(populate_by_name=True)
-#
-#     type: str
-#     input: Any
-#     context: dict[str, Any] = Field(alias="ctx")
-#     message: str = Field(alias="msg")
-#     location: list[str] = Field(alias="loc")
-
 class ValidationErrorSchema(BaseModel):
     """
     Модель, описывающая структуру ошибки валидации API
     """
-    model_config = ConfigDict(populate_by_name=True)
+    model_config = ConfigDict(populate_by_name=True, extra='forbid')
 
     type: str
     input: Any
+    context: dict[str, Any] = Field(alias="ctx")
     message: str = Field(alias="msg")
     location: list[str] = Field(alias="loc")
+
 
 
 class ValidationErrorResponseSchema(BaseModel):
