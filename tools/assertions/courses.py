@@ -62,6 +62,7 @@ def assert_get_courses_response(
 
 def assert_create_course_response(actual: CreateCourseResponseSchema, expected: CreateCourseRequestSchema):
     """
+    Проверяет, что данные переданные в запросе на создание курса, соответствуют данным в ответе того же запроса.
 
     :param actual: Данные которые получили в ответе на запрос создания курса.
     :param expected: Данные, которые переданы в запросе на создание курса
