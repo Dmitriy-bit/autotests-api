@@ -81,4 +81,4 @@ class UpdateExerciseResponseSchema(BaseModel):
     """
     Описание структуры ответа на обновление данных задания.
     """
-    exercises: ExerciseSchema
+    exercise: ExerciseSchema
