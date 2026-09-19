@@ -41,4 +41,4 @@ create_exercise_request = CreateExerciseRequestSchema(
 )
 
 create_exercise_response = exercises_client.create_exercise(create_exercise_request)
-print("\nCreate exercise data:", create_exercise_response)
+print("\nCreate exercises data:", create_exercise_response)

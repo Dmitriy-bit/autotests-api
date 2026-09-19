@@ -51,7 +51,7 @@ def assert_get_courses_response(
     Проверяет, что ответ на получение списка курсов соответствует ответам на их создание.
 
     :param get_courses_response: Ответ API при запросе списка курсов.
-    :param create_course_responses: Список API ответов при создании курсов.
+    :param create_course_response: Список API ответов при создании курсов.
     :raises AssertionError: Если данные курсов не совпадают.
     """
     assert_length(get_courses_response.courses, create_course_response, "courses")

@@ -29,7 +29,7 @@ class GetExerciseResponseSchema(BaseModel):
     """
     Описание структуры ответа получения задания для определенного курса.
     """
-    exercises: ExerciseSchema
+    exercise: ExerciseSchema
 
 
 class GetExercisesQuerySchema(BaseModel):
