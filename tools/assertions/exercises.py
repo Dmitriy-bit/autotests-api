@@ -76,10 +76,10 @@ def assert_update_exercise_response(request: UpdateExerciseRequestSchema,
 
 def assert_exercise_not_fount_response(actual: InternalErrorResponseSchema):
     """
-    Проверяет, что при запросе задания которое было удалено возвращается ожидаемый ответ "Exercise not found"
+    Проверяет, что при запросе задания которое было удалено возвращается ожидаемый ответ "Exercise not found".
 
-    :param actual: актуальный ответ на запрос удалённого задания
-    :return: Если детали актуального ответа и ожидаемого результата не совпадают.
+    :param actual: Актуальный ответ на запрос удалённого задания.
+    :return: Если актуальный ответ и ожидаемый результат не совпадают.
     """
     expected = InternalErrorResponseSchema(details="Exercise not found")
     assert_internal_error_response(actual, expected)
