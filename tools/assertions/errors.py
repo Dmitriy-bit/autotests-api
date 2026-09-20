@@ -44,6 +44,6 @@ def assert_internal_error_response(
 
     :param actual: Фактический ответ АРІ.
     :param expected: Ожидаемый ответ API.
-    :raises AssertionError: Если значения полей не совладают-
+    :raises AssertionError: Если значения полей не совладают.
     """
     assert_equal(actual.details, expected.details, "details")
