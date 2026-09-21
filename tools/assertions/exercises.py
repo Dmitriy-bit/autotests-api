@@ -1,6 +1,7 @@
 from clients.errors_schema import InternalErrorResponseSchema
 from clients.exercises.exercises_schema import CreateExerciseRequestSchema, CreateExerciseResponseSchema, \
-    ExerciseSchema, GetExerciseResponseSchema, UpdateExerciseResponseSchema, UpdateExerciseRequestSchema
+    ExerciseSchema, GetExerciseResponseSchema, UpdateExerciseResponseSchema, UpdateExerciseRequestSchema, \
+    GetExercisesResponseSchema
 from tools.assertions.base import assert_equal, assert_length
 from tools.assertions.errors import assert_internal_error_response
 
@@ -38,6 +39,7 @@ def assert_exercise(actual: ExerciseSchema, expected: ExerciseSchema):
     assert_equal(actual.course_id, expected.course_id, "course_id")
     assert_equal(actual.max_score, expected.max_score, "max_score")
     assert_equal(actual.min_score, expected.min_score, "min_score")
+    assert_equal(actual.order_index, expected.order_index, "order_index")
     assert_equal(actual.description, expected.description, "description")
     assert_equal(actual.estimated_time, expected.estimated_time, "estimated_time")
 
@@ -54,6 +56,24 @@ def assert_get_exercise_response(get_exercise_response: GetExerciseResponseSchem
     """
 
     assert_exercise(get_exercise_response.exercise, create_exercise_response.exercise)
+
+
+def assert_get_exercises_response(
+        get_exercises_response: GetExercisesResponseSchema,
+        create_exercises_response: list[CreateExerciseResponseSchema]
+
+):
+    """
+    Проверяет, что ответ на получение списка заданий соответствует ответам на их создание.
+
+    :param get_exercises_response: Ответ API при запросе списка заданий.
+    :param create_exercises_response:  Список API ответов при создании заданий.
+    :raises AssertionError: Если данные заданий не совпадают.
+    """
+    assert_length(get_exercises_response.exercises, create_exercises_response, "exercises")
+
+    for index, create_exercise_response in enumerate(create_exercises_response):
+        assert_exercise(get_exercises_response.exercises[index], create_exercise_response.exercise)
 
 
 def assert_update_exercise_response(request: UpdateExerciseRequestSchema,
