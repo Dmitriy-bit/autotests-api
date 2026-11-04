@@ -24,7 +24,7 @@ from allure_commons.types import Severity
 @allure.parent_suite(AllureEpic.LMS)
 @allure.suite(AllureFeature.AUTHENTICATION)
 class TestAuthentication:
-    @allure.title("Logit with correct email and password")
+    @allure.title("Login with correct email and password")
     @allure.story(AllureStory.LOGIN)
     @allure.severity(Severity.BLOCKER)
     @allure.sub_suite(AllureStory.LOGIN)
