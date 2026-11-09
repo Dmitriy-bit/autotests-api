@@ -101,7 +101,7 @@ def assert_update_exercise_response(request: UpdateExerciseRequestSchema,
 
 
 @allure.step("Check exercise not fount response")
-def assert_exercise_not_fount_response(actual: InternalErrorResponseSchema):
+def assert_exercise_not_found_response(actual: InternalErrorResponseSchema):
     """
     Проверяет, что при запросе задания которое было удалено возвращается ожидаемый ответ "Exercise not found".
 
