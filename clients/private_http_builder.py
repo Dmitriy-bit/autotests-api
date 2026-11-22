@@ -6,6 +6,7 @@ from clients.authentication.authentication_schema import LoginRequestSchema
 from clients.event_hooks import curl_event_hook
 from config import settings
 
+
 class AuthenticationUserSchema(BaseModel):
     model_config = ConfigDict(frozen=True)
     email: EmailStr

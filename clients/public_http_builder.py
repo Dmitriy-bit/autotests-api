@@ -3,6 +3,7 @@ from httpx import Client
 from clients.event_hooks import curl_event_hook
 from config import settings
 
+
 def get_public_http_client() -> Client:
     """
     Функция создаёт экземпляр httpx.Client с базовыми настройками.
